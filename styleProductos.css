@@ -1,0 +1,82 @@
+ /* Se agregan estilos para las secciones de productos */
+ .productos {
+     max-width: 1200px;
+     margin: 2rem auto;
+     padding: 0 1rem;
+ }
+
+ .producto {
+     display: flex;
+     align-items: center;
+     gap: 2rem;
+     margin: 2rem 0;
+     padding: 1rem;
+     background: #222222;
+     border-radius: 8px;
+ }
+
+ .producto .texto {
+     flex: 1;
+ }
+
+ .producto .texto h2 {
+     margin: 0 0 .5rem;
+     font-size: 2.4rem;
+     /* Título en grande */
+     line-height: 1.1;
+ }
+
+ .producto .texto p {
+     margin: 0.6rem 0 0;
+     /* separación debajo del título */
+     color: #333;
+     line-height: 1.5;
+     font-size: 1rem;
+ }
+
+ .producto .imagen {
+     flex: 1;
+     display: flex;
+     justify-content: center;
+     position: relative;
+     /* para el overlay */
+ }
+
+ .producto .imagen img {
+     width: 100%;
+     max-width: 700px;
+     height: auto;
+     border-radius: 6px;
+     object-fit: cover;
+     display: block;
+     position: relative;
+     z-index: 0;
+ }
+
+ /* Overlay para crear el fade de izquierda a derecha sobre la imagen */
+ .producto .imagen::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     z-index: 1;
+     border-radius: 6px;
+     /* Degradado que va de transparente (izq) a color de fondo (der) */
+     background: linear-gradient(to right, rgba(248, 248, 248, 0) 0%, rgb(0, 0, 0) 85%);
+     pointer-events: none;
+ }
+
+ @media (max-width: 800px) {
+     .producto {
+         flex-direction: column;
+         text-align: left;
+     }
+
+     .producto .imagen img {
+         max-width: 100%;
+     }
+
+     /* Desactivar overlay en móvil para que la imagen se vea completa */
+     .producto .imagen::after {
+         display: none;
+     }
+ }
