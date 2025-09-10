@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamiento 4x4</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #bbb;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 1s ease;
+      /* suaviza el cambio */
+    }
+
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      /* dos columnas: izq categorías, der texto */
+      /* por encima de los videos */
+      background: rgba(0, 0, 0, 0.4);
+      /* oscurece un poco para que se lea el texto */
+
+      justify-content: space-evenly;
+      align-items: center;
+
+    }
+
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.7;
+      transition: opacity 0.5s ease;
+      /* fade */
+      /* máscara inicial para wipe */
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 1s ease;
+      /* animación de izquierda a derecha */
+    }
+
+    /* contenedor para crear el efecto de 'wipe' con blur en movimiento */
+    .background-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      /* no interfiere con eventos */
+    }
+
+
+    @keyframes wipe {
+      from {
+        background-position: -100% 0;
+      }
+
+      to {
+        background-position: 100% 0;
+      }
+    }
+
+    /* al activar la clase, el pseudo-elemento desplaza el gradiente atravesando el área */
+    .background-wrapper.wiping::before {
+      animation: wipe 1s ease forwards;
+    }
+
+    /* luego de la animación se reduce la visibilidad y se limpia para el próximo wipe */
+    .background-wrapper.done::before {
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .hero-overlay h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .categories {
+      display: grid;
+      width: 30%;
+      max-width: 800px;
+    }
+
+
+
+    .category:hover {
+      transform: scale(1.025);
+
+      box-shadow: 0 4px 12px rgba(255, 200, 200, 0.7);
+    }
+
+    .category {
+      margin-left: 20px;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+      /* para que el pseudo no se salga */
+      background: rgba(26, 26, 26, 0.5);
+      /* removed backdrop-filter blur */
+      padding: 1.5rem;
+      border-radius: 0.2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      width: 40%;
+    }
+
+    /* capa de relleno */
+    .category::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* ocupa todo el div */
+      background: rgba(255, 200, 200, 0.15);
+      /* color de relleno */
+      transform: scaleX(0);
+      /* empieza vacío */
+      transform-origin: left;
+      /* arranca de la izquierda */
+      transition: transform 0.6s ease;
+      /* duración del relleno */
+      z-index: 0;
+    }
+
+    /* cuando haces hover, el relleno crece */
+    .category:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* aseguro que el contenido quede arriba */
+    .category h3,
+    .category ul {
+      position: relative;
+      z-index: 1;
+    }
+
+    .category:hover {
+      transform: scale(1.025);
+      box-shadow: 0 4px 12px rgba(255, 200, 200, 0.7);
+    }
+
+    .category h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+
+    .category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #aaa;
+    }
+
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #454545;
+      color: #3e3e3e;
+    }
+
+    .container {
+      left: auto;
+    }
+
+    .cat-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity 0.5s ease;
+      z-index: 0;
+    }
+
+    .category:hover .cat-video {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>FG Equipamientos 4x4</h1>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Contacto</a>
+      <a href="#">Carrito</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <!-- Video actual -->
+
+      <div class="hero-overlay">
+        <!-- Video de fondo -->
+        <div class="background-wrapper">
+          <video class="background-video" muted loop autoplay playsinline></video>
+        </div>
+
+        <div class="categories">
+          <div class="category" data-video="./videos/estribos.mp4">
+            <h3>Estribos</h3>
+          </div>
+          <div class="category" data-video="./videos/enganches.mp4">
+            <h3>Enganches</h3>
+          </div>
+          <div class="category" data-video="./videos/lonas.mp4">
+            <h3>Lonas Marítimas</h3>
+          </div>
+          <div class="category" data-video="./videos/tapas.mp4">
+            <h3>Tapas Rígidas</h3>
+          </div>
+          <div class="category" data-video="./videos/cobertores.mp4">
+            <h3>Cobertores</h3>
+          </div>
+        </div>
+
+        <h2>Equipamiento para tu 4x4</h2>
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+  <footer>
+    © 2025 Equipamiento 4x4 - Todos los derechos reservados
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const categories = document.querySelectorAll('.category');
+      const bgVideo = document.querySelector('.background-video');
+      const bgWrapper = document.querySelector('.background-wrapper');
+
+      categories.forEach(cat => {
+        const videoSrc = cat.getAttribute('data-video');
+
+        cat.addEventListener('mouseenter', () => {
+          if (bgVideo.src.includes(videoSrc)) return;
+
+          // preparar el wrapper para la nueva animación: quitar estado 'done' y forzar reflow
+          bgWrapper && bgWrapper.classList.remove('done');
+          bgWrapper && bgWrapper.offsetWidth; // reflow para reiniciar la animación
+
+          bgVideo.style.transition = 'none';           // reiniciar transición
+          bgVideo.style.clipPath = 'inset(0 100% 0 0)'; // oculto a la izquierda
+          bgVideo.src = videoSrc;
+          bgVideo.load();
+          bgVideo.play().catch(err => console.log(err));
+
+          // pequeño delay para que CSS aplique
+          setTimeout(() => {
+            bgVideo.style.transition = 'clip-path 1s ease';
+            // iniciar la animación unidireccional del wipe
+            if (bgWrapper) {
+              bgWrapper.classList.add('wiping');
+              // al terminar la animación, marcamos 'done' para hacer un fade y limpiar
+              bgWrapper.addEventListener('animationend', () => {
+                bgWrapper.classList.remove('wiping');
+                bgWrapper.classList.add('done');
+                // limpiar la clase 'done' después del fade para permitir reuso
+                setTimeout(() => bgWrapper.classList.remove('done'), 300);
+              }, { once: true });
+            }
+
+            bgVideo.style.clipPath = 'inset(0 0 0 0)'; // animación de izquierda a derecha
+
+          }, 50);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
