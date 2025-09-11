@@ -2,61 +2,32 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   min-height: 100vh;
-  color: white;
-  background-color: rgb(49, 0, 0);
-  /* Fondo: imagen + gradiente */
-  /* background-image:
-    url('logoFgRot2.png');
-    /* patrón de imagen */
-  /* radial-gradient(circle, #ff1f1f, #000000); */
-  /* gradiente de fondo */
+  color: rgb(255, 218, 218);
+  background-color: #e4e4e4c7;  
+} 
 
-  background-repeat: repeat, no-repeat;
-  /* patrón se repite, gradiente no */
-  background-size: 40px 40px, cover;
-  /* tamaño de patrón y gradiente */
-  background-position: 0 0, center;
-  /* posición de cada capa */
-
-  /* Animación para mover el patrón  
-  animation: moverPatron 10s linear infinite; */
-}
-
-@keyframes moverPatron {
-  0% {
-    background-position: 0 0, 0 40px;
-  }
-
-  100% {
-    background-position: 40px 40px, 0px 0px;
-    /* mueve ambas capas en la misma dirección diagonal */
-  }
-}
-
-header {
-  /* background: linear-gradient(0.25turn, rgb(255, 206, 206), transparent); */
-  /* padding: 1.5rem; */
-  background-color: rgb(241 239 234);
+header { 
+  background-color: rgb(241, 239, 234);
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #927d7d;
 }
 
-.header1 {
+.header1 { 
   padding: 1.5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  /* align-items: center; */
+  justify-content: space-between; 
 }
 
 .nombre {
   font-size: 20px;
   color: #000000;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 nav a {
-  font-family: 'Nunito', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-left: 1rem;
@@ -93,67 +64,7 @@ nav a:hover {
   width: 10%;
   height: 10%;
 }
-
-.categorias {
-  display: flex;
-  width: 100%;
-  max-width: 100%;
-  background-color: rgba(0, 0, 0, 0.178);
-}
-
-.boton {
-  margin-left: 20px;
-  margin-bottom: 0px;
-  position: relative;
-  overflow: hidden;
-  /* para que el pseudo no se salga */
-  background: rgba(160, 160, 160, 0.5);
-  /* removed backdrop-filter blur */
-  /* padding: 1.5rem; */
-  border-radius: 0.2rem;
-  /* box-shadow: 0 2px 6px rgba(155, 155, 155, 0.5); */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 50%;
-  height: 85%;
-}
-
-/* capa de relleno */
-.boton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* ocupa todo el div */
-  background: rgba(255, 200, 200, 0.15);
-  /* color de relleno */
-  transform: scaleY(0);
-  /* empieza vacío */
-  transform-origin: top;
-  /* arranca de la izquierda */
-  transition: transform 0.6s ease;
-  /* duración del relleno */
-  z-index: 0;
-}
-
-/* cuando haces hover, el relleno crece */
-.boton:hover::before {
-  transform: scaleY(1);
-}
-
-.boton:hover h3 {
-  color: white;
-}
-
-/* aseguro que el contenido quede arriba */
-
-.boton h3 {
-  position: relative;
-  z-index: 1;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  justify-self: center;
-  color: rgb(172, 172, 172);
-}
+ 
 
 footer {
   padding: 1.5rem;

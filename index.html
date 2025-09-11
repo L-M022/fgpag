@@ -7,6 +7,15 @@
   <title>Equipamiento 4x4</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styleProductos.css">
+  <!-- preconnect (mejora carga) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- cargar solo los pesos que necesites para optimizar -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
 
   </style>
@@ -39,59 +48,81 @@
 
   </div>
 
-  <div class="categorias">
-    <div class="boton">
-      <h3>Estribos</h3>
-    </div>
-    <div class="boton">
-      <h3>Enganches</h3>
-    </div>
-    <div class="boton">
-      <h3>Lonas</h3>
-    </div>
-    <div class="boton">
-      <h3>Tapas Rígidas</h3>
-    </div>
-    <div class="boton">
-      <h3>Cobertores</h3>
-    </div>
-  </div>
-
   <!-- Secciones de productos: texto a la izquierda, imagen grande a la derecha -->
   <section class="productos">
 
     <div class="producto">
       <div class="texto">
-        <h2>Estribos</h2>
-        <p>Estribos robustos y resistentes, diseñados para ofrecer seguridad y estilo. Fabricados con materiales de alta
-          calidad para soportar uso off-road y condiciones exigentes.</p>
+        <h1>Estribos</h1>
+        <hr><br>
+        <ul>
+          <li>Estribos robustos y resistentes para uso off-road.</li>
+          <li>Diseñados para aportar seguridad y estilo a tu vehículo.</li>
+          <li>Fabricados con materiales de alta calidad para soportar condiciones exigentes.</li>
+          <li>Disponibles en marcas reconocidas: SteelTiger, Bracco y Khrom.</li>
+        </ul>
+        <button class="btn-modern">Ver más</button>
       </div>
-      <div class="imagen">
+
+      <div class="carousel-fade">
         <img src="./images/estribos.png" alt="Estribos">
+        <img src="./images/estribos2.jpg" alt="Estribos 2">
+        <img src="./images/estribos3.jpg" alt="Estribos 3">
       </div>
     </div>
 
     <div class="producto">
       <div class="texto">
-        <h2>Cobertores</h2>
-        <p>Cobertores personalizados para proteger la carga y mantenerla segura. Disponibles en varios materiales y
-          acabados, pensados para uso diario y aventuras largas.</p>
+        <h1>Cobertores</h1>
+        <hr><br>
+        <ul>
+          <li>Cobertores personalizados para proteger la carga y mantenerla segura.</li>
+          <li>Disponibles en distintos materiales y acabados para adaptarse a cada necesidad.</li>
+          <li>Diseñados tanto para el uso diario como para aventuras largas.</li>
+          <li>Calidad garantizada con la marca reconocida: Truckliner.</li>
+        </ul>
+        <button class="btn-modern">Ver más</button>
       </div>
-      <div class="imagen">
-        <img src="./images/cobertor.png" alt="Cobertor">
+      <div class="carousel-fade">
+        <img src="./images/cobertor.png" alt="Estribos">
+        <img src="./images/cobertor2.jpg" alt="Estribos 2">
+        <img src="./images/cobertor3.jpg" alt="Estribos 3">
       </div>
     </div>
 
     <div class="producto">
       <div class="texto">
-        <h2>Lonas Marítimas</h2>
-        <p>Lonas marinas resistentes al agua y al sol, ideales para proteger cargas expuestas. Costuras reforzadas y
-          materiales UV-stabilized para larga duración.</p>
+        <h1 style="font-size:60px">Lonas Marítimas</h1>
+        <hr><br>
+        <ul>
+          <li>Resistentes al agua y al sol</li>
+          <li>Costuras reforzadas</li>
+          <li>Materiales UV-stabilized para mayor durabilidad</li>
+          <li>Disponibles para varios modelos</li>
+          <li>Ideales para proteger cargas expuestas</li>
+        </ul>
+        <button class="btn-modern">Ver más</button>
       </div>
       <div class="imagen">
-        <img src="./images/3.jpg" alt="Lonas Marítimas">
+        <img src="./images/lona.png" alt="Lonas Marítimas">
       </div>
     </div>
+
+    <section class="vector-gallery">
+      <div class="vector-grid">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/bracco.jpg" alt="Vector 1">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/mcgard.png" alt="Vector 2">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector3.svg" alt="Vector 3">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector4.svg" alt="Vector 4">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector5.svg" alt="Vector 5">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector6.svg" alt="Vector 6">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector7.svg" alt="Vector 7">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector8.svg" alt="Vector 8">
+       <div class="vector-cell"> <img class="vector-cell" src="./images/vector9.svg" alt="Vector 9">
+     
+    </section>
+
+
 
   </section>
 
@@ -108,6 +139,24 @@
       bgVideo.src = videoSrc;
       bgVideo.load();
       bgVideo.play().catch(err => console.log(err));
+    });
+    const carousels = document.querySelectorAll('.carousel-fade');
+
+    carousels.forEach(carousel => {
+      const images = carousel.querySelectorAll('img');
+      let current = 0;
+
+      // Muestra la primera imagen
+      images[current].classList.add('active');
+
+      function nextImage() {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+      }
+
+      // Cambia imagen cada 3 segundos para este carrusel
+      setInterval(nextImage, 3000);
     });
   </script>
 </body>

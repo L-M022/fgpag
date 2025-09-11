@@ -8,30 +8,93 @@
  .producto {
      display: flex;
      align-items: center;
-     gap: 2rem;
      margin: 2rem 0;
-     padding: 1rem;
-     background: #222222;
+     background: rgb(241, 239, 234);
      border-radius: 8px;
+ }
+
+ :root {
+     --font-heading: 'Oswald', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
  }
 
  .producto .texto {
      flex: 1;
+     z-index: 2
  }
 
- .producto .texto h2 {
-     margin: 0 0 .5rem;
-     font-size: 2.4rem;
-     /* Título en grande */
-     line-height: 1.1;
- }
-
- .producto .texto p {
-     margin: 0.6rem 0 0;
-     /* separación debajo del título */
-     color: #333;
+ .producto .texto h1 {
+     z-index: 2;
+     justify-self: anchor-center;
+     font-family: var(--font-heading);
+     font-weight: 700;
+     /* cambiar a 600/400 según el caso */
+     letter-spacing: 0.02em;
+     /* opcional para mejorar lectura */
+     text-transform: uppercase;
+     /* típico en branding offroad */
+     margin: 0 0 .0rem;
+     font-size: 5rem;
      line-height: 1.5;
-     font-size: 1rem;
+     color: #3d3d3dc7;
+ }
+
+ hr {
+     width: 70%;
+ }
+
+
+ .btn-modern {
+     margin-bottom: 4%;
+     margin-top: 4%;
+     margin-left: 30%;
+     position: relative;
+     background: #ff5e5e;
+     /* color base inicial */
+     color: white;
+     font-weight: bold;
+     padding: 12px 28px;
+     border: none;
+     border-radius: 12px;
+     cursor: pointer;
+     font-size: 25px;
+     width: 200px;
+     height: 60px;
+     overflow: hidden;
+     z-index: 1;
+     transition: transform 0.3s ease;
+ }
+
+ /* Pseudo-elemento para el relleno sólido desde el centro */
+ .btn-modern::before {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 0;
+     height: 100%;
+     /* máxima altura */
+     background-color: #ca2e29;
+     /* color sólido del relleno */
+     transform: translate(-50%, -50%);
+     border-radius: 0%;
+     transition: width 0.3s ease;
+     z-index: -1;
+     opacity: 1;
+     /* opacidad completa */
+ }
+
+ /* Hover: expandir el relleno horizontalmente desde el centro */
+ .btn-modern:hover::before {
+     width: 100%;
+
+ }
+
+ .producto .texto li {
+     font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+     margin: 0.6rem 0 0;
+     color: #1d1d1dc7;
+     line-height: 1;
+     font-size: 18px;
  }
 
  .producto .imagen {
@@ -39,14 +102,17 @@
      display: flex;
      justify-content: center;
      position: relative;
+
      /* para el overlay */
  }
 
  .producto .imagen img {
+     margin-left: -200px;
      width: 100%;
      max-width: 700px;
+     max-height: 300px;
      height: auto;
-     border-radius: 6px;
+     border-radius: 12px;
      object-fit: cover;
      display: block;
      position: relative;
@@ -55,14 +121,52 @@
 
  /* Overlay para crear el fade de izquierda a derecha sobre la imagen */
  .producto .imagen::after {
+     margin-left: -100px;
      content: "";
      position: absolute;
      inset: 0;
      z-index: 1;
      border-radius: 6px;
      /* Degradado que va de transparente (izq) a color de fondo (der) */
-     background: linear-gradient(to right, rgba(248, 248, 248, 0) 0%, rgb(0, 0, 0) 85%);
+     background: linear-gradient(to left, rgba(248, 248, 248, 0) 50%, rgb(241, 239, 234) 85%);
      pointer-events: none;
+ }
+
+ .carousel-fade {
+     position: relative;
+     width: 700px;
+     /* ajusta al tamaño deseado */
+     height: 400px;
+     margin: 0 auto;
+     overflow: hidden;
+     border-radius: 12px;
+ }
+
+ .carousel-fade img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     opacity: 0;
+     transition: opacity 1s ease-in-out;
+ }
+
+ .carousel-fade::after {
+     margin-left: -100px;
+     content: "";
+     position: absolute;
+     inset: 0;
+     z-index: 1;
+     border-radius: 6px;
+     /* Degradado que va de transparente (izq) a color de fondo (der) */
+     background: linear-gradient(to left, rgba(248, 248, 248, 0) 50%, rgb(241, 239, 234) 85%);
+     pointer-events: none;
+ }
+
+ .carousel-fade img.active {
+     opacity: 1;
  }
 
  @media (max-width: 800px) {
@@ -79,4 +183,41 @@
      .producto .imagen::after {
          display: none;
      }
+ }
+
+ .vector-gallery {
+     padding: 40px 20px;
+     background-color: #f8f8f8;
+ }
+
+ .vector-grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     max-width: 1000px;
+     margin: 0 auto;
+ }
+
+ .vector-cell {
+    width: 200px;
+    height: 200px;
+     background-color: #fff;
+     /* color del recuadro del grid */
+     border-radius: 12px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     /* espacio interno */
+     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1); 
+ }
+ 
+
+ .vector-cell img {
+     width: 80%;
+     /* tamaño de la imagen menor que la celda */
+     height: auto;
+     display: block;
+     border-radius: 8px;
+     /* opcional, para suavizar bordes */
  }
