@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipamiento 4x4</title>
+  <title>FG Equipamientos 4x4</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styleProductos.css">
   <!-- preconnect (mejora carga) -->
@@ -14,17 +14,15 @@
   <!-- cargar solo los pesos que necesites para optimizar -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet"> -->
 
-  <style>
-
-  </style>
 </head>
 
 <body>
   <header>
-    <div class="header1">
-      <a class="nombre">FG Equipamientos 4x4</a>
+    <div class="header">
+      <!-- <a class="nombre">FG Equipamientos 4x4</a> -->
+        <img class="logo" src="./imagenes/marcas/logo_FG.png" /> 
       <nav>
         <a href="#">Productos</a>
         <a href="#">Contacto</a>
@@ -41,13 +39,11 @@
     </div>
   </header>
 
-  <div class="container">
-
-    <video class="header-video" data-video="./videos/estribos.mp4" muted loop autoplay playsinline></video>
-    <!-- <h2>Equipamiento para tu 4x4</h2> -->
-
+  <div class="parallax">
+    <div class="texto_p">PARA LOS QUE SOMOS TODO TERRENO LO QUE SOBRAN SON NUEVOS CAMINOS.
+    </div>
   </div>
-
+<br><br><br>
   <!-- Secciones de productos: texto a la izquierda, imagen grande a la derecha -->
   <section class="productos">
 
@@ -65,9 +61,9 @@
       </div>
 
       <div class="carousel-fade">
-        <img src="./images/estribos.png" alt="Estribos">
-        <img src="./images/estribos2.jpg" alt="Estribos 2">
-        <img src="./images/estribos3.jpg" alt="Estribos 3">
+        <img src="./imagenes/productos/estribos.png" alt="Estribos">
+        <img src="./imagenes/productos/estribos2.png" alt="Estribos 2">
+        <img src="./imagenes/productos/estribos3.png" alt="Estribos 3">
       </div>
     </div>
 
@@ -84,9 +80,9 @@
         <button class="btn-modern">Ver más</button>
       </div>
       <div class="carousel-fade">
-        <img src="./images/cobertor.png" alt="Estribos">
-        <img src="./images/cobertor2.jpg" alt="Estribos 2">
-        <img src="./images/cobertor3.jpg" alt="Estribos 3">
+        <img src="./imagenes/productos/cobertor.png" alt="Estribos">
+        <img src="./imagenes/productos/cobertor2.png" alt="Estribos 2">
+        <img src="./imagenes/productos/cobertor3.png" alt="Estribos 3">
       </div>
     </div>
 
@@ -104,33 +100,52 @@
         <button class="btn-modern">Ver más</button>
       </div>
       <div class="imagen">
-        <img src="./images/lona.png" alt="Lonas Marítimas">
+        <img src="./imagenes/lona.png" alt="Lonas Marítimas">
       </div>
     </div>
+  </section>
 
-    <section class="vector-gallery">
-      <div class="vector-grid">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/bracco.jpg" alt="Vector 1">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/mcgard.png" alt="Vector 2">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector3.svg" alt="Vector 3">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector4.svg" alt="Vector 4">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector5.svg" alt="Vector 5">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector6.svg" alt="Vector 6">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector7.svg" alt="Vector 7">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector8.svg" alt="Vector 8">
-       <div class="vector-cell"> <img class="vector-cell" src="./images/vector9.svg" alt="Vector 9">
-     
-    </section>
-
-
-
+  <br>
+  <div class="producto">
+    <div class="texto">
+      <h1>Nuestras Marcas Destacadas</h1>
+    </div>
+  </div>
+  <br>
+  <p>Calidad y Resistencia</p>
+  <p>En fg4x4 nos enorgullecemos de ofrecer productos de alta calidad y resistencia. Trabajamos con las mejores marcas
+    del mercado para brindarte accesorios duraderos y confiables para tu vehículo 4x4. Explora nuestra selección y
+    encuentra lo que necesitas para tu próxima aventura todoterreno.</p>
+  <br> <br>
+  <section class="vector-gallery">
+    <div class="vector-grid">
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_bracco.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_FG.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/multicap.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_steeltiger.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_rhino.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_truckliner.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_tury.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/logo_mcgard.png" /> </div>
+      <div class="vector-cell"> <img src="./imagenes/marcas/vector9.svg" /> </div>
+    </div>
   </section>
 
   <footer>
     © 2025 FG Equipamientos 4x4 - Todos los derechos reservados
+    <br> <br> Campo de Mayo 7005, Villa Bosch
   </footer>
 
   <script>
+    //parallax
+    window.addEventListener("scroll", function () {
+      const parallax = document.querySelector(".parallax");
+      let scrollY = window.scrollY;
+      parallax.style.backgroundPositionY = -(scrollY * .5) + "px";
+    });
+
+
+    //Videos autoplay
     document.addEventListener('DOMContentLoaded', () => {
 
       const bgVideo = document.querySelector('.header-video');
@@ -140,6 +155,8 @@
       bgVideo.load();
       bgVideo.play().catch(err => console.log(err));
     });
+
+    //Fotos productos
     const carousels = document.querySelectorAll('.carousel-fade');
 
     carousels.forEach(carousel => {

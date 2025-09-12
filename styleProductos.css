@@ -185,39 +185,27 @@
      }
  }
 
- .vector-gallery {
-     padding: 40px 20px;
-     background-color: #f8f8f8;
- }
 
  .vector-grid {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 20px;
      max-width: 1000px;
-     margin: 0 auto;
+    justify-self: center;
  }
 
  .vector-cell {
-    width: 200px;
-    height: 200px;
-     background-color: #fff;
-     /* color del recuadro del grid */
-     border-radius: 12px;
+     width: 300px;
+     height: 300px;
+     justify-self: center;
+     /* padding-left: 32px; */
      display: flex;
-     justify-content: center;
+     /* justify-content: center; */
      align-items: center;
-     padding: 20px;
-     /* espacio interno */
-     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1); 
+     box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.274);
  }
- 
+
 
  .vector-cell img {
-     width: 80%;
-     /* tamaño de la imagen menor que la celda */
-     height: auto;
-     display: block;
-     border-radius: 8px;
-     /* opcional, para suavizar bordes */
+     width: -webkit-fill-available; 
+     margin: 20px;
  }
