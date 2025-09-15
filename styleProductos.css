@@ -39,20 +39,15 @@
  }
 
  hr {
-     width: 70%;
+     width: 93%;
  }
 
-
  .btn-modern {
-     margin-bottom: 4%;
-     margin-top: 4%;
-     margin-left: 30%;
-     position: relative;
-     background: #ff5e5e;
-     /* color base inicial */
+        margin-left: -300px;
+     margin-bottom: 20px;
+     background: #84a1ff;
      color: white;
      font-weight: bold;
-     padding: 12px 28px;
      border: none;
      border-radius: 12px;
      cursor: pointer;
@@ -86,10 +81,10 @@
  /* Hover: expandir el relleno horizontalmente desde el centro */
  .btn-modern:hover::before {
      width: 100%;
-
  }
 
  .producto .texto li {
+        margin-left: 25px;
      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
      margin: 0.6rem 0 0;
      color: #1d1d1dc7;
@@ -99,11 +94,19 @@
 
  .producto .imagen {
      flex: 1;
-     display: flex;
      justify-content: center;
      position: relative;
 
-     /* para el overlay */
+ }
+
+ .descripcion {
+     height: 500px;
+     display: flex;
+     align-content: center;
+     flex-direction: column;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     align-items: center;
  }
 
  .producto .imagen img {
@@ -112,34 +115,21 @@
      max-width: 700px;
      max-height: 300px;
      height: auto;
-     border-radius: 12px;
+     border-radius: 8px;
      object-fit: cover;
      display: block;
      position: relative;
      z-index: 0;
  }
 
- /* Overlay para crear el fade de izquierda a derecha sobre la imagen */
- .producto .imagen::after {
-     margin-left: -100px;
-     content: "";
-     position: absolute;
-     inset: 0;
-     z-index: 1;
-     border-radius: 6px;
-     /* Degradado que va de transparente (izq) a color de fondo (der) */
-     background: linear-gradient(to left, rgba(248, 248, 248, 0) 50%, rgb(241, 239, 234) 85%);
-     pointer-events: none;
- }
-
  .carousel-fade {
      position: relative;
      width: 700px;
      /* ajusta al tamaño deseado */
-     height: 400px;
+     height: 500px;
      margin: 0 auto;
      overflow: hidden;
-     border-radius: 12px;
+     border-radius: 8px;
  }
 
  .carousel-fade img {
@@ -147,7 +137,7 @@
      top: 0;
      left: 0;
      width: 100%;
-     height: 100%;
+     height: auto;
      object-fit: cover;
      opacity: 0;
      transition: opacity 1s ease-in-out;
@@ -159,14 +149,17 @@
      position: absolute;
      inset: 0;
      z-index: 1;
-     border-radius: 6px;
-     /* Degradado que va de transparente (izq) a color de fondo (der) */
+     border-radius: 12px;
      background: linear-gradient(to left, rgba(248, 248, 248, 0) 50%, rgb(241, 239, 234) 85%);
      pointer-events: none;
  }
 
  .carousel-fade img.active {
      opacity: 1;
+ }
+
+ .carousel-fade img {
+     height: 500px;
  }
 
  @media (max-width: 800px) {
@@ -183,29 +176,31 @@
      .producto .imagen::after {
          display: none;
      }
- }
-
+ } 
 
  .vector-grid {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      max-width: 1000px;
-    justify-self: center;
+     justify-self: center;
  }
 
  .vector-cell {
      width: 300px;
      height: 300px;
-     justify-self: center;
-     /* padding-left: 32px; */
-     display: flex;
-     /* justify-content: center; */
+     justify-self: center; 
+     display: flex; 
      align-items: center;
      box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.274);
  }
 
 
  .vector-cell img {
-     width: -webkit-fill-available; 
+     width: -webkit-fill-available;
      margin: 20px;
+ }
+
+ model-viewer {
+     width: 100%;
+     justify-self: center;
  }

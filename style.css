@@ -1,19 +1,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  min-height: 100vh;
-  /* color: rgb(228, 195, 195); */
+  min-height: 100vh; 
   background-color: #c5c5c5c7;
-}
-
-header {
-  background-color: rgb(241, 239, 234);
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #927d7d;
-}
+} 
 
 .header {
+  background-color: rgb(241, 239, 234);
+  border-bottom: 1px solid #927d7d;
   padding: 1rem;
   display: flex;
   flex-direction: row;
