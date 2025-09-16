@@ -1,9 +1,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  min-height: 100vh; 
+  min-height: 100vh;
   background-color: #c5c5c5c7;
-} 
+}
 
 .header {
   background-color: rgb(241, 239, 234);
@@ -32,9 +32,7 @@ nav a {
 .icono-carrito {
   margin-left: 1rem;
   fill: currentColor;
-  /* toma el color del texto */
   stroke: none;
-  /* sin borde */
   vertical-align: middle;
   color: #000000;
 }
@@ -42,9 +40,7 @@ nav a {
 .icono-carrito:hover {
   margin-left: 1rem;
   fill: currentColor;
-  /* toma el color del texto */
   stroke: none;
-  /* sin borde */
   vertical-align: middle;
   color: rgb(100, 100, 100);
 }
@@ -59,13 +55,28 @@ nav a:hover {
   height: 10%;
 }
 
+input {
+  background-color: rgb(219, 218, 214);
+  height: 35px;
+  width: 250px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 0px 0px 1px gray;
+  padding-left: 30px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+}
+
+
 .parallax {
   position: relative;
   background-image: url("./imagenes/fondo.png");
-  /* cambia por tu imagen */
   height: 100vh;
   background-attachment: fixed;
-  /* efecto parallax */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -85,7 +96,7 @@ nav a:hover {
   text-align: center;
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-}
+} 
 
 p {
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;

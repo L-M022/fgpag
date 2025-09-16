@@ -1,0 +1,71 @@
+@media (max-width: 800px) {
+
+  body {
+    font-size: 12px;  
+  }
+ 
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .logo {
+    width: 120px; /* aumenta un poco en móvil */
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 16px;
+    margin-left: 0;
+  }
+
+  .icono-carrito {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  input {
+    width: 90%;  
+    max-width: 250px;
+    height: 35px;
+    padding-left: 35px; /* mantiene espacio para la lupa */
+    margin-bottom: 10px;
+  }
+
+  /* Parallax: reduce altura */
+  .parallax {
+    height: 200px;
+    background-attachment: scroll; /* parallax fijo no funciona en algunos móviles */
+  }
+
+  .texto_p {
+    font-size: 0.8rem; /* texto más pequeño */
+    width: 90%;
+  }
+
+  p {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 1rem;
+    font-size: 12px;
+  }
+
+  /* Video header si lo tienes */
+  .header-video {
+    width: 100%;
+    height: auto;
+  }
+
+}

@@ -5,17 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FG Equipamientos 4x4</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styleProductos.css">
-  <!-- preconnect (mejora carga) -->
+  <link rel="stylesheet" href="mobile_productos_style.css">
+  <link rel="stylesheet" href="mobile_style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- cargar solo los pesos que necesites para optimizar -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  
-</head> 
+
+</head>
 
 <body>
 
@@ -23,6 +25,7 @@
 
     <img class="logo" src="./imagenes/marcas/logo_FG.webp" />
     <nav>
+      <input></input>
       <a href="#">Productos</a>
       <a href="#">Contacto</a>
       <svg class="icono-carrito" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 166" width="24" height="24"
@@ -41,18 +44,16 @@
   <div class="parallax">
     <div class="texto_p">PARA LOS QUE SOMOS TODO TERRENO LO QUE SOBRAN SON NUEVOS CAMINOS.
     </div>
-    
-
   </div>
 
   <br><br><br>
-  <!-- Secciones de productos: texto a la izquierda, imagen grande a la derecha -->
+
   <section class="productos">
 
     <div class="producto">
       <div class="descripcion">
         <div class="texto">
-          <h1>Estribos</h1>
+          <h1 class="titulo">Estribos</h1>
           <hr><br>
           <ul>
             <li>Estribos robustos y resistentes para uso off-road.</li>
@@ -61,7 +62,7 @@
             <li>Disponibles en marcas reconocidas: SteelTiger, Bracco y Khrom.</li>
           </ul>
         </div>
-        <button class="btn-modern"  >Ver más</button>
+        <button class="btn-modern">Ver más</button>
       </div>
       <div class="carousel-fade">
         <img src="./imagenes/productos/estribos.webp" alt="Estribos">
@@ -73,7 +74,7 @@
     <div class="producto">
       <div class="descripcion">
         <div class="texto">
-          <h1>Cobertores</h1>
+          <h1 class="titulo">Cobertores</h1>
           <hr><br>
           <ul>
             <li>Cobertores perfectos para proteger la carga y mantenerla segura.</li>
@@ -96,9 +97,8 @@
     <div class="producto">
       <div class="descripcion">
         <div class="texto">
-          <h1 style="font-size:60px;  margin-left: 50px; width:100%;">Lonas Marítimas</h1>
-          <hr style="margin-left: 20px;">
-          <br>
+          <h1 class="titulo">Lonas Maritimas</h1>
+          <hr style="margin-left: 20px;"><br>
           <ul>
             <li>Resistentes al agua y al sol</li>
             <li>Costuras reforzadas</li>
@@ -108,7 +108,7 @@
           </ul>
 
         </div>
-        <button class="btn-modern" style="margin-left: -260px;">Ver más</button>
+        <button class="btn-modern">Ver más</button>
       </div>
       <div class="carousel-fade">
         <img src="./imagenes/productos/lona.webp" alt="lona">
@@ -122,44 +122,54 @@
   </section>
 
   <br>
-  <div class="producto">
-    <div class="texto">
-      <h1>Nuestras Marcas Destacadas</h1>
-    </div>
+
+  <div class="footer_marcas">
+    <h1>Nuestras Marcas Destacadas</h1>
   </div>
-  <br>
+
+  <section class="vector-gallery">
+    <div class="vector-carousel">
+      <div class="vector-item"><img src="./imagenes/marcas/logo_bracco.webp" loading="lazy" /></div>
+      <div class="vector-item" style="width: 100px;"><img src="./imagenes/marcas/logo_FG.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/multicap.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_steeltiger.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_rhino.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_truckliner.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_tury.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_mcgard.webp" loading="lazy" /></div>
+
+      <!-- Repetimos para scroll infinito -->
+      <div class="vector-item"><img src="./imagenes/marcas/logo_bracco.webp" loading="lazy" /></div>
+      <div class="vector-item" style="width: 100px;"><img src="./imagenes/marcas/logo_FG.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/multicap.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_steeltiger.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_rhino.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_truckliner.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_tury.webp" loading="lazy" /></div>
+      <div class="vector-item"><img src="./imagenes/marcas/logo_mcgard.webp" loading="lazy" /></div>
+
+    </div>
+  </section>
   <p>Calidad y Resistencia</p>
   <p>En fg4x4 nos enorgullecemos de ofrecer productos de alta calidad y resistencia. Trabajamos con las mejores marcas
     del mercado para brindarte accesorios duraderos y confiables para tu vehículo 4x4. Explora nuestra selección y
     encuentra lo que necesitas para tu próxima aventura todoterreno.</p>
   <br> <br>
-  <section class="vector-gallery">
-    <div class="vector-grid">
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_bracco.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_FG.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/multicap.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_steeltiger.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_rhino.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_truckliner.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_tury.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/logo_mcgard.webp" loading="lazy" /> </div>
-      <div class="vector-cell"> <img src="./imagenes/marcas/vector9.svg" loading="lazy" /> </div>
-    </div>
-  </section>
 
   <footer>
     © 2025 FG Equipamientos 4x4 - Todos los derechos reservados
     <br> <br> Campo de Mayo 7005, Villa Bosch
   </footer>
-  <model-viewer src="/imagenes/ford_ranger_next-gen_2023_sport.glb" alt="Descripción del producto: barra antivuelco para pick-up"
-      poster="/imagenes/poster-modelo.jpg" loading="lazy" auto-rotate
-  exposure="2.5"  environment-image="neutral"
-      interaction-prompt="auto" style="width:100%;max-width:1050px;height:600px;">
-    </model-viewer>
+  <model-viewer src="/imagenes/ford_ranger_next-gen_2023_sport.glb"
+    alt="Descripción del producto: barra antivuelco para pick-up" poster="/imagenes/poster-modelo.jpg" loading="lazy"
+    auto-rotate exposure="2.5" environment-image="neutral" interaction-prompt="auto"
+    style="width:100%;max-width:1050px;height:600px;">
+  </model-viewer>
 
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <script>
+      
     //parallax
     const parallax = document.querySelector(".parallax");
     window.addEventListener("scroll", () => {
@@ -167,8 +177,6 @@
         parallax.style.backgroundPositionY = -(window.scrollY * 0.5) + "px";
       });
     });
-
-
 
     //Videos autoplay
     document.addEventListener('DOMContentLoaded', () => {

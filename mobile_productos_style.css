@@ -1,0 +1,114 @@
+/* Ajustes globales para móviles */
+@media (max-width: 800px) {
+
+    /* Productos: columnas a vertical */
+    .producto {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .producto .texto {
+        width: 100%; /* ancho completo */
+        margin-bottom: 15px;
+    }
+
+    .producto .texto h1 {
+        font-size: 2rem; /* reduce títulos grandes */
+        line-height: 1.3;
+    }
+
+    .producto .texto li {
+        font-size: 16px;
+        margin-left: 0;
+        text-align: left;
+    }
+
+    /* Botones centrados y más anchos */
+    .btn-modern {
+        margin: 0 auto 20px auto;
+        width: 80%;
+        max-width: 200px;
+        font-size: 18px;
+        height: 50px;
+    }
+
+    /* Carousel productos más pequeño */
+    .carousel-fade {
+        width: 90%;
+        height: 250px;
+    }
+
+    .carousel-fade img {
+        height: 100%;
+    }
+
+    /* Imagen de producto */
+    .producto .imagen img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Footer marcas */
+    .footer_marcas {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    /* Vector carousel adaptado */
+    .vector-carousel {
+        gap: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        animation: none; /* desactiva scroll automático en móvil para mejor control */
+    }
+
+    .vector-item {
+        width: 120px;
+        height: 120px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+    }
+
+    .vector-item img {
+        width: 80%;
+        height: auto;
+    }
+
+    /* Parallax */
+    .parallax {
+        height: 200px;
+        background-position: center;
+    }
+
+    /* Model-viewer más pequeño */
+    model-viewer {
+        height: 300px;
+    }
+
+    /* Header: menú vertical y logo centrado */
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        max-width: 150px;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 90%;
+        max-width: 250px;
+        height: 35px;
+        padding-left: 35px;
+    }
+}

@@ -1,4 +1,3 @@
- /* Se agregan estilos para las secciones de productos */
  .productos {
      max-width: 1200px;
      margin: 2rem auto;
@@ -18,48 +17,53 @@
  }
 
  .producto .texto {
-     flex: 1;
-     z-index: 2
+     width: 500px;
  }
+  
+ .producto .descripcion .texto h1 {
+     z-index: 5;  
 
- .producto .texto h1 {
-     z-index: 2;
-     justify-self: anchor-center;
+     justify-self: center;
      font-family: var(--font-heading);
      font-weight: 700;
-     /* cambiar a 600/400 según el caso */
      letter-spacing: 0.02em;
-     /* opcional para mejorar lectura */
      text-transform: uppercase;
-     /* típico en branding offroad */
      margin: 0 0 .0rem;
-     font-size: 5rem;
      line-height: 1.5;
      color: #3d3d3dc7;
+     display: block;
+     white-space: nowrap; 
+     overflow: hidden; 
+     font-size: 70px;  
+     /* nunca sobrepasa el contenedor */
+     line-height: 1.2;
+     margin: 0;
  }
 
+
  hr {
-     width: 93%;
+     width: 90%;
  }
 
  .btn-modern {
-        margin-left: -300px;
+     position: relative;
+     margin-left: 0;
      margin-bottom: 20px;
+     margin-left: -250px;
      background: #84a1ff;
      color: white;
      font-weight: bold;
      border: none;
-     border-radius: 12px;
+     border-radius: 8px;
      cursor: pointer;
      font-size: 25px;
      width: 200px;
      height: 60px;
      overflow: hidden;
      z-index: 1;
-     transition: transform 0.3s ease;
+     transition: transform 0.3s ease, color 0.3s ease;
  }
 
- /* Pseudo-elemento para el relleno sólido desde el centro */
  .btn-modern::before {
      content: '';
      position: absolute;
@@ -67,24 +71,23 @@
      left: 50%;
      width: 0;
      height: 100%;
-     /* máxima altura */
-     background-color: #ca2e29;
-     /* color sólido del relleno */
+     background-color: #3161ff;
      transform: translate(-50%, -50%);
      border-radius: 0%;
      transition: width 0.3s ease;
      z-index: -1;
-     opacity: 1;
-     /* opacidad completa */
  }
 
- /* Hover: expandir el relleno horizontalmente desde el centro */
  .btn-modern:hover::before {
      width: 100%;
  }
 
+ .btn-modern:hover {
+     color: white;
+ }
+
  .producto .texto li {
-        margin-left: 25px;
+     margin-left: 25px;
      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
      margin: 0.6rem 0 0;
      color: #1d1d1dc7;
@@ -92,11 +95,20 @@
      font-size: 18px;
  }
 
- .producto .imagen {
+ .producto .imagen img {
      flex: 1;
+     display: flex;
      justify-content: center;
+     align-items: center;
+     width: 100%;
+     max-width: 700px;
+     height: auto;
+     border-radius: 8px;
+     object-fit: cover;
+     display: block;
      position: relative;
-
+     z-index: 0;
+     margin: 0;
  }
 
  .descripcion {
@@ -109,48 +121,48 @@
      align-items: center;
  }
 
- .producto .imagen img {
-     margin-left: -200px;
+ .footer_marcas {
+
+     font-family: var(--font-heading);
+     font-weight: 700;
+     letter-spacing: 0.02em;
+     text-transform: uppercase;
+     font-size: 5rem;
+     text-align: center;
+     font-size: 40px;
+     color: #3d3d3dc7;
+     background-color: rgb(241, 239, 234);
      width: 100%;
-     max-width: 700px;
-     max-height: 300px;
-     height: auto;
-     border-radius: 8px;
-     object-fit: cover;
-     display: block;
-     position: relative;
-     z-index: 0;
  }
+
 
  .carousel-fade {
      position: relative;
      width: 700px;
-     /* ajusta al tamaño deseado */
      height: 500px;
      margin: 0 auto;
      overflow: hidden;
-     border-radius: 8px;
  }
 
  .carousel-fade img {
+     border-top-right-radius: 8px;
+     border-bottom-right-radius: 8px;
      position: absolute;
      top: 0;
      left: 0;
-     width: 700px;
-     height: auto;
+     width: 100%;
+     height: 100%;
      object-fit: cover;
      opacity: 0;
      transition: opacity 1s ease-in-out;
  }
 
  .carousel-fade::after {
-     margin-left: -100px;
      content: "";
      position: absolute;
      inset: 0;
      z-index: 1;
-     border-radius: 12px;
-     background: linear-gradient(to left, rgba(248, 248, 248, 0) 50%, rgb(241, 239, 234) 85%);
+     background: linear-gradient(to left, rgba(248, 248, 248, 0) 40%, rgb(241, 239, 234) 95%);
      pointer-events: none;
  }
 
@@ -158,9 +170,6 @@
      opacity: 1;
  }
 
- .carousel-fade img {
-     height: 500px;
- }
 
  @media (max-width: 800px) {
      .producto {
@@ -170,37 +179,69 @@
 
      .producto .imagen img {
          max-width: 100%;
+         height: auto;
      }
 
-     /* Desactivar overlay en móvil para que la imagen se vea completa */
+     .carousel-fade {
+         height: 300px;
+         /* menor altura en móvil */
+     }
+
+     .carousel-fade img {
+         height: 100%;
+     }
+
      .producto .imagen::after {
          display: none;
      }
- } 
-
- .vector-grid {
-     display: grid;
-     grid-template-columns: repeat(3, 1fr);
-     max-width: 1000px;
-     justify-self: center;
- }
-
- .vector-cell {
-     width: 300px;
-     height: 300px;
-     justify-self: center; 
-     display: flex; 
-     align-items: center;
-     box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.274);
- }
-
-
- .vector-cell img {
-     width: -webkit-fill-available;
-     margin: 20px;
  }
 
  model-viewer {
      width: 100%;
      justify-self: center;
  }
+
+ .vector-gallery {
+     overflow: hidden;
+     width: 100%;
+     background: #f1efea;
+ }
+
+ .vector-carousel {
+     display: flex;
+     animation: scroll 20s linear infinite;
+ }
+
+ .vector-item {
+     flex: 0 0 auto;
+     width: 150px;
+     max-width: 150px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .vector-item img {
+     width: 80%;
+     height: auto;
+ }
+
+ @keyframes scroll {
+     0% {
+         transform: translateX(0);
+     }
+
+     100% {
+         transform: translateX(-50%);
+     }
+ }
+
+ /*  
+ @media (max-width: 800px) {
+     .vector-item {
+         width: 150px;
+         height: 150px;
+     }
+ } */
