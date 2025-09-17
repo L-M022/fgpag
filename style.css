@@ -142,10 +142,10 @@ footer {
 }
 
 .social-icons a {
-  color: #333;
+  color: rgb(190, 190, 190);
   /* color de los iconos */
   transition: transform 0.2s, color 0.2s;
-   
+
 }
 
 .icon_fb:hover {
@@ -155,10 +155,32 @@ footer {
 .icon_yt:hover {
   color: #ff0000;
 }
-.icon_ig{
-  fill:currentColor;
-  transition: transform 0.2s, fill 0.2s;
-}
+
 .icon_ig:hover {
-  fill: #ff09b5;
+  color: #ff09b5;
 }
+ 
+ .icon_mp .cls-1 {
+  fill: #353535;
+}
+
+.icon_mp .cls-2 {
+  fill: #fff;
+}
+
+.icon_mp .cls-3 {
+  fill: #9292927a;
+}
+.icon_mp:hover .cls-1 {
+  fill: #0a0080;
+}
+
+.icon_mp:hover .cls-3  {
+  fill: #00bcff;
+}
+.icon_mp .cls-1,
+.icon_mp .cls-2,
+.icon_mp .cls-3 {
+  transition: fill 0.3s ease; /* aplica transición al fill */
+}
+
