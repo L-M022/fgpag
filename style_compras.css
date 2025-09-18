@@ -1,0 +1,54 @@
+#compras {
+    width: 50px;
+    height: 50px;
+    justify-self: center;
+    align-content: center;
+    text-align-last: center;
+}
+
+#bloque_compras {
+    display: none;
+    width: 500px;
+    height: 150px;
+    position: absolute;
+    z-index: 99;
+    background-color: rgb(240, 240, 240); 
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start; 
+    transform: translate(-434px, -55px);
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 0.25px;
+    /* Transición suave */
+    transition: all 0.3s ease;
+}
+
+/* Mostrar el bloque al hacer hover sobre #compras */
+#compras:hover #bloque_compras {
+    display: flex;
+    transform: translate(-434px, 25px);
+}
+
+/* Agrandar el bloque al hacer hover sobre él mismo */
+#bloque_compras:hover {
+    transform: translate(-434px, -55px);
+    /* mover si quieres */
+    width: 500px;
+    height: 600px;
+    /* altura mayor */
+}
+
+
+#articulos {
+    font-size: 20px;
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h2 {
+    background-color: rgba(255, 228, 196, 0.514);
+    color: gray;
+    margin-top: 10px;
+    font-size: 30px; 
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+}

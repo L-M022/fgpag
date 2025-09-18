@@ -20,6 +20,17 @@ body {
   height: 50px;
 }
 
+nav {
+  height: 20px;
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
+} 
+
 nav a {
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -44,6 +55,7 @@ nav a {
   vertical-align: middle;
   color: rgb(100, 100, 100);
 }
+
 
 nav a:hover {
   color: rgb(66, 66, 66);
@@ -159,8 +171,8 @@ footer {
 .icon_ig:hover {
   color: #ff09b5;
 }
- 
- .icon_mp .cls-1 {
+
+.icon_mp .cls-1 {
   fill: #353535;
 }
 
@@ -171,16 +183,18 @@ footer {
 .icon_mp .cls-3 {
   fill: #9292927a;
 }
+
 .icon_mp:hover .cls-1 {
   fill: #0a0080;
 }
 
-.icon_mp:hover .cls-3  {
+.icon_mp:hover .cls-3 {
   fill: #00bcff;
 }
+
 .icon_mp .cls-1,
 .icon_mp .cls-2,
 .icon_mp .cls-3 {
-  transition: fill 0.3s ease; /* aplica transición al fill */
+  transition: fill 0.3s ease;
+  /* aplica transición al fill */
 }
-

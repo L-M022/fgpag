@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FG Equipamientos 4x4 - Inicio</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style_productos.css">
-  <link rel="stylesheet" href="mobile_productos_style.css">
-  <link rel="stylesheet" href="mobile_style.css">
+  <link id="theme" rel="stylesheet" href="style.css">
+  <link id="theme_productos" rel="stylesheet" href="style_productos.css">
+  <link id="theme_compras" rel="stylesheet" href="style_compras.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,15 +19,14 @@
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script type="module" src="scripts.js"></script>
   <script type="module" src="login.js"></script>
+  <script type="module" src="db.js"></script>
+
+  <!-- Firebase para manejar usuarios -->
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
       apiKey: "AIzaSyDOFuZKYbSMCHe3-l_JDkGQUSk_c469XQM",
       authDomain: "fg4x4-5669e.firebaseapp.com",
@@ -43,6 +41,27 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+
+  <!-- Detecta dispositivo y cambia el css -->
+  <script>
+    (function () {
+      // Detectar móvil
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      // Referencias a los link de CSS
+      const link1 = document.getElementById("theme");
+      const link2 = document.getElementById("theme_productos");
+
+      if (isMobile) {
+        link1.href = "mobile_style.css";
+        link2.href = "mobile_style_productos.css";
+      } else {
+        link1.href = "style.css";
+        link2.href = "style_productos.css";
+      }
+    })();
+
+  </script>
 </head>
 
 <body>
@@ -50,20 +69,36 @@
   <header class="header">
     <a href="index.html"><img class="logo" src="./imagenes/marcas/logo_FG.webp" alt=""></a>
     <nav>
-      <input></input>
+      <input class="search_bar"></input>
       <a href="productos.html">Productos</a>
       <a href="#">Contacto</a>
-      <svg class="icono-carrito" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 166" width="24" height="24"
-        preserveAspectRatio="xMidYMid meet">
-        <path
-          d="M197.9 55.9L169.9 127.4 64.5 127.4 27.6 29.8 0 29.8 0.2 16.7 36.5 16.7 73.4 114.3 160.9 114.3 183 55.9">
-        </path>
-        <circle cx="143.8" cy="153" r="13"></circle>
-        <circle cx="90.8" cy="153" r="13"></circle>
-        <text x="55%" y="10" dy=".48em" text-anchor="middle" font-size="150">1</text>
-      </svg>
-    </nav>
+      <a id="user" href="register.html">Ingresar</a>
 
+      <div id="compras"> 
+        <div id="bloque_compras">
+          <h2>Carrito</h2>
+          <hr>
+          <ul id="articulos">
+            <li>test1 : 2</li>
+            <li>test1 : 3</li>
+            <li>test1 : 1</li>
+            <li>test1 : 5</li>
+            <li>test1 : 12</li>
+          </ul>
+        </div>
+        <svg class="icono-carrito" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 166" width="24" height="24"
+          preserveAspectRatio="xMidYMid meet">
+
+          <path
+            d="M197.9 55.9L169.9 127.4 64.5 127.4 27.6 29.8 0 29.8 0.2 16.7 36.5 16.7 73.4 114.3 160.9 114.3 183 55.9">
+          </path>
+          <circle cx="143.8" cy="153" r="13"></circle>
+          <circle cx="90.8" cy="153" r="13"></circle>
+          <text x="55%" y="10" dy=".48em" text-anchor="middle" font-size="150">1</text>
+        </svg>
+      </div>
+
+    </nav>
   </header>
 
   <div class="parallax">

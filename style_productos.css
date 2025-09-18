@@ -1,7 +1,7 @@
  .productos {
      max-width: 1200px;
-     margin: 2rem auto;
-     padding: 0 1rem;
+     /* margin: 2rem auto; */
+     padding: 80px;
  }
 
  .producto {
@@ -9,7 +9,7 @@
      align-items: center;
      margin: 2rem 0;
      background: rgb(241, 239, 234);
-     border-radius: 8px;
+     border-radius: 8px; 
  }
 
  :root {

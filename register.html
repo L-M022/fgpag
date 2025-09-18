@@ -46,7 +46,6 @@
 <body>
 
     <header class="header">
-
         <a href="index.html"><img class="logo" src="./imagenes/marcas/logo_FG.webp" alt=""></a>
         <nav>
             <input class="search_bar"></input>
@@ -63,16 +62,17 @@
                 <text x="55%" y="10" dy=".48em" text-anchor="middle" font-size="150">1</text>
             </svg>
         </nav>
-
     </header>
 
+    <h1>Ingresá a tu cuenta</h1>
     <div id="registerContainer">
-        <input class="register" type="text" id="name" placeholder="Nombre">
-        <input class="register" type="text" id="surname" placeholder="Apellido">
+        <input style="display: none;" class="register" type="text" id="name" placeholder="Nombre">
+        <input style="display: none;" class="register" type="text" id="surname" placeholder="Apellido">
         <input class="register" type="email" id="email" placeholder="Email">
         <input class="register" type="password" id="password" placeholder="Contraseña">
-        <button onclick="registrar()">Registrar</button>
-        <p id="estado">No logueado</p>
+        <button id="login_register_btn" onclick="ingresar()">Ingresar</button>
+        <button id="cancel" onclick="goBack()">Cancelar</button>
+        <p href="#" id="register_tip" onclick="logToReg()">No tienes cuenta? <strong>Registrate</strong></p>
     </div>
 
     <br><br><br>
