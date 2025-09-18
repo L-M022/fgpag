@@ -7,7 +7,7 @@
   <title>FG Equipamientos 4x4 - Inicio</title>
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="styleProductos.css">
+  <link rel="stylesheet" href="style_productos.css">
   <link rel="stylesheet" href="mobile_productos_style.css">
   <link rel="stylesheet" href="mobile_style.css">
 
@@ -19,6 +19,30 @@
 
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script type="module" src="scripts.js"></script>
+  <script type="module" src="login.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDOFuZKYbSMCHe3-l_JDkGQUSk_c469XQM",
+      authDomain: "fg4x4-5669e.firebaseapp.com",
+      projectId: "fg4x4-5669e",
+      storageBucket: "fg4x4-5669e.firebasestorage.app",
+      messagingSenderId: "540558630585",
+      appId: "1:540558630585:web:94d75012ab66807e674568",
+      measurementId: "G-T1YP9FYM36"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 
 <body>
@@ -177,7 +201,7 @@
 
         <div class="social-icons">
           <svg class="icon_mp" xmlns="http://www.w3.org/2000/svg" viewBox="323 90 455.82 352.2" width="120" height="50">
-            
+
             <path class="cls-3"
               d="m274.38,116.94c-77.83,0-140.91,40.36-140.91,90.15s63.09,94.05,140.91,94.05,140.91-44.27,140.91-94.05-63.09-90.15-140.91-90.15Z" />
             <path class="cls-2"
