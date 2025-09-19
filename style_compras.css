@@ -1,54 +1,119 @@
 #compras {
     width: 50px;
     height: 50px;
-    justify-self: center;
     align-content: center;
     text-align-last: center;
 }
 
 #bloque_compras {
-    display: none;
-    width: 500px;
-    height: 150px;
+    display: flex;
+    overflow: hidden;
+    max-width: 0;
+    max-height: 0;
     position: absolute;
     z-index: 99;
-    background-color: rgb(240, 240, 240); 
+    background-color: rgba(211, 211, 211, 0.548);
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: flex-start; 
-    transform: translate(-434px, -55px);
-    border-radius: 4px;
-    box-shadow: 0px 0px 0px 0.25px;
-    /* Transición suave */
-    transition: all 0.3s ease;
+    justify-content: flex-start;
+    backdrop-filter: blur(5px);
+
+    transition: max-height 0.5s ease;
 }
 
 /* Mostrar el bloque al hacer hover sobre #compras */
 #compras:hover #bloque_compras {
-    display: flex;
-    transform: translate(-434px, 25px);
-}
-
-/* Agrandar el bloque al hacer hover sobre él mismo */
-#bloque_compras:hover {
-    transform: translate(-434px, -55px);
-    /* mover si quieres */
-    width: 500px;
-    height: 600px;
-    /* altura mayor */
-}
-
+    /* #compras #bloque_compras { */
+    max-width: 500px;    
+    max-height: 500px;
+    transform: translate(-450px, 35px); 
+    justify-content: flex-start;
+    box-shadow: 0px 0px 0px 2px;
+    flex-wrap: nowrap; 
+} 
 
 #articulos {
-    font-size: 20px;
     font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#nombre {
+    overflow: hidden;
+    display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align-last: left;
+    border-right: ridge;
+}
+
+#articulo {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.753);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+}
+
+#articulo:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+#unidad {
+    width: 120px;
+    border-right: ridge;
+    text-align-last: left;
+    margin-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+
+.icono-tacho {
+    fill: darkgray;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.icono-tacho path {
+    transition: fill 0.3s ease;
+}
+
+.icono-tacho:hover {
+    fill: red;
 }
 
 h2 {
-    background-color: rgba(255, 228, 196, 0.514);
-    color: gray;
-    margin-top: 10px;
-    font-size: 30px; 
-    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    background-color: darkslategrey;
+    color: #f0f0f0;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    height: auto;
+    font-size: 30px;
+    padding: 15px;
     text-align: center;
+    cursor: default;
+}
+
+#finalizar_compra {
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 0px;
+}
+
+#finalizar_compra:hover {
+    background-color: rgb(26, 44, 44);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }

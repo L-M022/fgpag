@@ -29,7 +29,11 @@ nav {
   align-content: center;
   justify-content: flex-end;
   align-items: center;
-} 
+}
+
+a {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
 
 nav a {
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -46,6 +50,7 @@ nav a {
   stroke: none;
   vertical-align: middle;
   color: #000000;
+  cursor: pointer;
 }
 
 .icono-carrito:hover {

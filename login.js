@@ -45,7 +45,7 @@ window.ingresar = async function () {
 
         console.log("Logueado:", userCredential.user);
         alert("Bienvenido: " + userCredential.user.displayName);
-         window.location.href = "http://192.168.100.112:5500/index.html"; 
+        window.location.href = "http://192.168.100.112:5500/index.html";
     } catch (error) {
         alert("Error: " + error.message);
     }
@@ -63,16 +63,17 @@ window.goBack = async function () {
         document.getElementById("name").style.display = "none";
         document.getElementById("surname").style.display = "none";
         document.getElementById("register_tip").style.display = "block";
-    } else{
-        window.location.href = "http://192.168.100.112:5500/index.html"; 
+    } else {
+        window.location.href = "http://192.168.100.112:5500/index.html";
     }
 }
 window.logToReg = async function () {
     document.getElementById("login_register_btn").innerHTML = "Registrar";
-    document.getElementById("login_register_btn").onclick = registrar();
+    document.getElementById("login_register_btn").addEventListener("click", registrar);
+
     document.getElementById("name").style.display = "block";
     document.getElementById("surname").style.display = "block";
-    document.getElementById("register_tip").style.display = "none"; 
+    document.getElementById("register_tip").style.display = "none";
 }
 // Detectar cambios de sesión
 onAuthStateChanged(auth, (user) => {
