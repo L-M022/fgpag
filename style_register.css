@@ -45,8 +45,7 @@ nav a {
 }
 
 #register_tip {
-    cursor: pointer;
-
+    cursor: pointer; 
 }
 
 #register_tip:hover {
@@ -121,9 +120,9 @@ button:hover {
 
 }
 
-input::placeholder {
-    margin-left: 10px;
-}
+input.register {
+    padding-left: 10px;
+} 
 
 h1 {
     font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -263,6 +262,5 @@ footer {
 .icon_mp .cls-1,
 .icon_mp .cls-2,
 .icon_mp .cls-3 {
-    transition: fill 0.3s ease;
-    /* aplica transición al fill */
+    transition: fill 0.3s ease; 
 }

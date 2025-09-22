@@ -43,7 +43,7 @@
 
 <body>
 
-  <header class="header">
+    <header class="header">
     <a href="index.html"><img class="logo" src="./imagenes/marcas/logo_FG.webp" alt=""></a>
     <nav>
       <input class="search_bar"></input>
@@ -57,7 +57,7 @@
           <h2>Carrito</h2>
 
           <div id="articulos">
-            <div id="articulo">
+            <div id="articulo" class="articulo">
               <p id="nombre"><strong>Texto largooooooooooooooooooooooo</strong></p>
               <p id="unidad">Cantidad: <strong>1222122</strong></p>
               <svg class="icono-tacho" xmlns="http://www.w3.org/2000/svg" viewBox="20 50 450 500" width="30" height="30"
@@ -67,7 +67,7 @@
 
               </svg>
             </div>
-            <div id="articulo">
+            <div id="articulo" class="articulo">
               <p id="nombre"><strong>Texto medianoo</strong></p>
               <p id="unidad">Cantidad: <strong>321</strong></p>
               <svg class="icono-tacho" xmlns="http://www.w3.org/2000/svg" viewBox="20 50 450 500" width="30" height="30"
@@ -77,7 +77,7 @@
 
               </svg>
             </div>
-            <div id="articulo">
+            <div id="articulo" class="articulo">
               <p id="nombre"><strong>Texto medianoo</strong></p>
               <p id="unidad">Cantidad: <strong>1222</strong></p>
               <svg class="icono-tacho" xmlns="http://www.w3.org/2000/svg" viewBox="20 50 450 500" width="30" height="30"
@@ -87,7 +87,7 @@
 
               </svg>
             </div>
-            <div id="articulo">
+            <div id="articulo" class="articulo">
               <p id="nombre"><strong>Corto</strong></p>
               <p id="unidad">Cantidad: <strong>12</strong></p>
               <svg class="icono-tacho" xmlns="http://www.w3.org/2000/svg" viewBox="20 50 450 500" width="30" height="30"
@@ -97,7 +97,7 @@
 
               </svg>
             </div>
-            <div id="articulo">
+            <div id="articulo" class="articulo">
               <p id="nombre"><strong>C</strong></p>
               <p id="unidad">Cantidad: <strong>1</strong></p>
               <svg class="icono-tacho" xmlns="http://www.w3.org/2000/svg" viewBox="20 50 450 500" width="30" height="30"
@@ -118,12 +118,13 @@
           </path>
           <circle cx="143.8" cy="153" r="13"></circle>
           <circle cx="90.8" cy="153" r="13"></circle>
-          <text x="55%" y="10" dy=".48em" text-anchor="middle" font-size="150">1</text>
+          <text id="cantCompras" x="55%" y="20" dy=".50em" text-anchor="middle" font-size="120">1</text>
         </svg>
       </div>
 
     </nav>
   </header>
+
 
   <div id="productosContainer"></div>
 
