@@ -91,7 +91,7 @@ input {
 
 .parallax {
   position: relative;
-  background-image: url("./imagenes/fondo.png");
+  background-image: url("/imagenes/fondo.png");
   height: 100vh;
   background-attachment: fixed;
   background-position: center;

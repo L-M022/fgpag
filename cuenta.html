@@ -76,25 +76,10 @@
 
 
     <div id="registerContainer">
-        <h1 id="titulo">Ingresá a tu cuenta</h1>
+        <h1 id="titulo">Ajustes de cuenta</h1>
         <div style="display: flex;">
-            <input style="display: none; margin-right: 5px; width: 114px;" onclick="revertirColor('name')"
-                class="register" type="text" id="name" placeholder="Nombre">
-            <input style="display: none; margin-left: 5px; width: 114px;" onclick="revertirColor('surname')"
-                class="register" type="text" id="surname" placeholder="Apellido">
+            <h2 id="finalizar_compra" onclick="logout()">Cerrar sesion</h2>
         </div>
-        <input style="display: none;" class="register" type="dni" id="dni" onclick="revertirColor('dni')"
-            placeholder="Dni (sin puntos)">
-        <input style="display: none;" class="register" type="telefono" id="telefono" onclick="revertirColor('telefono')"
-            placeholder="Telefono">
-        <input class="register" type="email" id="email" onclick="revertirColor('email')" placeholder="Email">
-        <input class="register" type="password" id="password" onclick="revertirColor('password')"
-            placeholder="Contraseña">
-
-        <button id="login_btn" onclick="ingresar()">Ingresar</button>
-        <button id="register_btn" onclick="registrar()">Registrar</button>
-        <button id="cancel" onclick="goBack()">Cancelar</button>
-        <p id="register_tip" onclick="logToReg()">No tienes cuenta? <strong>Registrate</strong></p>
     </div>
 
     <br><br><br>

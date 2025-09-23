@@ -46,7 +46,7 @@
     border-right: ridge;
 }
 
-#articulo {
+.articulo {
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -61,10 +61,12 @@
     justify-self: center;
 }
 
-#articulo:hover {
+.articulo:hover {
     background-color: rgb(255, 255, 255);
 }
-
+#register_btn{
+    display: none;
+}
 #unidad {
     width: 120px;
     border-right: ridge;
