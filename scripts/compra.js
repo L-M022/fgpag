@@ -19,8 +19,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+const db = getFirestore(app); 
+// Guardar en window para que otros scripts puedan usarlo
+window.firebaseApp = app; 
+window.db = db;
 // --------------------------
 // Agregar producto al catálogo
 // --------------------------
@@ -37,12 +39,16 @@ async function agregarProducto(productoID, nombre, precio, stock, imagen) {
 // --------------------------
 // Agregar producto al carrito (array en usuario)
 // --------------------------
-async function agregarAlCarrito(usuarioID, producto) {
-  const userRef = doc(db, "usuarios", usuarioID);
-  await updateDoc(userRef, {
-    carrito: arrayUnion(producto) // producto es objeto {productoID, nombre, precio, unidad}
-  });
-  console.log("Producto agregado al carrito:", producto.nombre);
+  window.agregarAlCarrito = async function(usuarioID, producto) {
+   try {
+        const userRef = doc(db, "usuarios", usuarioID);
+        await setDoc(userRef, {
+            carrito: arrayUnion(producto)
+        }, { merge: true }); // merge: true = no sobrescribe el resto del documento
+        console.log("Producto agregado al carrito:", producto.nombre);
+    } catch (error) {
+        console.error("Error agregando al carrito:", error);
+    }
 }
 
 // --------------------------

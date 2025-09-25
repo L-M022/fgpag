@@ -33,6 +33,34 @@ nav {
 
 a {
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+  align-content: center;
+  z-index: 12;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#user {
+  font-size: 20px;
+}
+
+.circulo {
+  width: 40px;
+  /* diámetro del círculo */
+  height: 40px;
+  background-color: rgba(127, 243, 252, 0.507);
+  /* color del círculo */
+  border-radius: 50%;
+  /* forma circular */
+  display: inline-block;
+  z-index: 0;
+}
+
+.circulo:hover {
+
+  background-color: rgba(67, 131, 136, 0.486);
 }
 
 nav a {
@@ -74,8 +102,7 @@ nav a:hover {
 
 input {
   background-color: rgb(219, 218, 214);
-  height: 35px;
-  width: 250px;
+  height: 35px; 
   border-radius: 4px;
   border: none;
   box-shadow: 0px 0px 0px 1px gray;
@@ -202,4 +229,32 @@ footer {
 .icon_mp .cls-3 {
   transition: fill 0.3s ease;
   /* aplica transición al fill */
+}
+
+#bloque_ajuste {
+  display: flex;
+  flex-wrap: wrap;
+  text-align-last: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+p1 {
+  white-space: nowrap; 
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: rgba(128, 128, 128, 0.336);
+  width: fit-content;
+  padding: 10px;
+  padding-right: 20px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #3d3d3dc7;
+  text-align: center;
+  width: 70%;
+  justify-self: center;
 }

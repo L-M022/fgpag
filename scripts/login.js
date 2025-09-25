@@ -3,6 +3,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import { updateProfile } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+import { getFirestore, doc, setDoc, getDoc, arrayRemove, updateDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
 // Configuración de tu proyecto (la que Firebase te dio)
 const firebaseConfig = {
     apiKey: "AIzaSyDOFuZKYbSMCHe3-l_JDkGQUSk_c469XQM",
@@ -13,15 +16,12 @@ const firebaseConfig = {
     appId: "1:540558630585:web:94d75012ab66807e674568",
     measurementId: "G-T1YP9FYM36"
 };
-var logeado = false;
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.onload = function () {
-    cantCompras();
-    cargarCarrito();
-};
+window.auth = getAuth(app);
+// Inicializar Firestore
+const db = getFirestore(app);
+window.db = db; // opcional: para usarlo en otros scripts
 
 // Registrar usuario nuevo
 window.registrar = async function () {
@@ -38,22 +38,18 @@ window.registrar = async function () {
     const dniRegex = /^\d{7,10}$/;
     const telefonoRegex = /^\d{8,12}$/;
 
-
     if (!nameRegex.test(nombre) || nombre.length < 4) {
         manejoErrores(null, "error-nombre");
         return false;
     }
-
     if (!nameRegex.test(apellido) || apellido.length < 4) {
         manejoErrores(null, "error-apellido");
         return false;
     }
-
     if (!dniRegex.test(dni)) {
         manejoErrores(null, "error-dni");
         return false;
     }
-
     if (!telefonoRegex.test(telefono)) {
         manejoErrores(null, "error-telefono");
         return false;
@@ -64,14 +60,35 @@ window.registrar = async function () {
     }
 
     try {
+        // Crear usuario en Firebase Auth
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
         const user = userCredential.user;
+
+        // Actualizar displayName en Auth
         await updateProfile(user, { displayName: nombre + " " + apellido });
-        console.log("Usuario creado:", userCredential.user);
-        alert("Registro exitoso: " + userCredential.user.displayName);
-        logeado = true;
+        console.log("Usuario creado en Auth:", user);
+
+        // ------------------------------
+        // Crear documento en Firestore
+        // ------------------------------
+        const userRef = doc(db, "usuarios", user.uid);
+        const docSnap = await getDoc(userRef);
+
+        if (!docSnap.exists()) {
+            // Solo crear si no existe
+            await setDoc(userRef, {
+                dni: dni,
+                telefono: telefono,
+                carrito: [],     // carrito vacío al inicio
+                compras: []      // historial vacío al inicio
+            });
+            console.log("Documento de usuario creado en Firestore:", user.uid);
+        }
+
+        alert("Registro exitoso: " + user.displayName);
+
         window.location.href = "http://192.168.100.112:5500/index.html";
+
     } catch (error) {
         manejoErrores(error, "");
     }
@@ -91,7 +108,7 @@ window.ingresar = async function () {
     }
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        logeado = true;
+
         console.log("Logueado:", userCredential.user);
 
         alert("Bienvenido: " + userCredential.user.displayName);
@@ -105,9 +122,9 @@ window.ingresar = async function () {
 window.logout = async function () {
     var ingresarHeader = document.getElementById("user");
     ingresarHeader.href = "http://192.168.100.112:5500/register.html";
-    logeado = false;
+
     await signOut(auth);
-     window.location.href = "http://192.168.100.112:5500/index.html"; 
+    window.location.href = "http://192.168.100.112:5500/index.html";
 }
 
 window.goBack = async function () {
@@ -147,16 +164,30 @@ window.logToReg = async function () {
 // Detectar cambios de sesión
 onAuthStateChanged(auth, (user) => {
     var ingresarHeader = document.getElementById("user");
+    var usuario = document.getElementById("user");
     if (user) {
         var nombreapellido = user.displayName || "";
         var nombre = nombreapellido.split(" ")[0].split("")[0];
         var apellido = nombreapellido.split(" ")[1].split("")[0];
-        ingresarHeader.innerHTML = nombre[0] + apellido[0];
+
+        ingresarHeader.title="Ajustes de la cuenta";
+        ingresarHeader.style.textTransform = "uppercase";
+        ingresarHeader.innerHTML = nombre[0] + apellido[0]; 
         ingresarHeader.href = "http://192.168.100.112:5500/cuenta.html";
-        console.log("usuario: " + user.displayName); 
-         logeado = true;
-    } else { 
-        logeado = false;
+        console.log("usuario: " + user.displayName);
+
+        cargarCarrito(window.auth.currentUser.uid);
+        usuario.className = "circulo";
+        if (window.location.href.includes("cuenta")) {
+            const nombreUsuario = window.auth.currentUser;
+            ingresarHeader.title="Ingrese a su cuenta";
+            var nombre = document.getElementById("nombree");
+            var apellido = document.getElementById("apellido");
+            nombre.innerHTML = "<strong>Nombre:</strong> "+nombreUsuario.displayName.split(" ")[0];
+            apellido.innerHTML ="<strong>Apellido:</strong> "+ nombreUsuario.displayName.split(" ")[1];
+        }
+    } else {
+        usuario.className = "--circulo";
         ingresarHeader.innerHTML = "Ingresar";
         ingresarHeader.href = "http://192.168.100.112:5500/register.html";
     }
@@ -254,12 +285,48 @@ window.revertirColor = async function (id) {
     document.getElementById(id).style.color = "black";
     document.getElementById(id).style.boxShadow = "0px 0px 0px 1px gray";
 }
- 
 
-window.borrarCompra = async function (n) {
-    var articulo = document.getElementById("articulo-" + n);
-    articulo.remove();
-    cantCompras();
+
+window.borrarCompra = async function (n, usuarioID) {
+    try {
+        // Obtener referencia al documento del usuario
+        const userRef = doc(db, "usuarios", usuarioID);
+
+        // Obtener los datos actuales
+        const userSnap = await getDoc(userRef);
+        if (!userSnap.exists()) {
+            console.error("Usuario no encontrado");
+            return;
+        }
+
+        const datos = userSnap.data();
+        const carrito = datos.carrito || [];
+
+        // Validar índice
+        if (n < 0 || n >= carrito.length) {
+            console.error("Índice fuera de rango:", n);
+            return;
+        }
+
+        const productoAEliminar = carrito[n];
+
+        // Eliminar el producto del array en Firestore
+        await updateDoc(userRef, {
+            carrito: arrayRemove(productoAEliminar)
+        });
+
+        // Eliminar del DOM
+        const articulo = document.getElementById("articulo-" + n);
+        if (articulo) articulo.remove();
+
+        // Actualizar contador de compras
+        cantCompras();
+
+        console.log("Producto eliminado del carrito:", productoAEliminar.nombre);
+
+    } catch (error) {
+        console.error("Error eliminando producto del carrito:", error);
+    }
 }
 
 window.cantCompras = async function () {
@@ -274,6 +341,8 @@ window.cantCompras = async function () {
         compras.style.display = "block";
         cantcompras.textContent = articulos.length;
     }
+    var bloqueCompra = document.getElementById("--compras");
+    bloqueCompra.id = "compras";
 
 }
 
@@ -286,19 +355,18 @@ window.mostrarArticulos = async function (productos) {
         const div = document.createElement("div");
         div.id = `articulo-${index}`;
         div.className = "articulo";
-
         // Nombre
         const pNombre = document.createElement("p");
         pNombre.innerHTML = `<strong>${producto.nombre}</strong>`;
-
+        pNombre.setAttribute("id", "nombre");
         // Cantidad
         const pUnidad = document.createElement("p");
         pUnidad.innerHTML = `Cantidad: <strong>${producto.unidad}</strong>`;
-
+        pUnidad.setAttribute("id", "unidad");
         // Icono (SVG)
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("class", "icono-tacho");
-        svg.setAttribute("onclick", `borrarCompra('${index}')`);
+        svg.setAttribute("onclick", `borrarCompra(${index},'${window.auth.currentUser.uid}')`);
         svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         svg.setAttribute("viewBox", "20 50 450 500");
         svg.setAttribute("width", "30");
@@ -318,28 +386,33 @@ window.mostrarArticulos = async function (productos) {
         // Insertar en el contenedor
         contenedor.appendChild(div);
     });
+    cantCompras();
+}
+window.cargarCarrito = async function (usuarioID) {
+    try {
+        // Referencia al documento del usuario
+        const userDocRef = doc(db, "usuarios", usuarioID);
 
+        // Obtener el documento
+        const userSnap = await getDoc(userDocRef);
 
-    await agregarProducto("p001", "Camiseta", 1500, 10, "url-imagen");
-    await agregarAlCarrito("usuario123", {
-        productoID: "p001",
-        nombre: "Camiseta",
-        precio: 1500,
-        unidad: 2
-    });
-
-    async function cargarCarrito(usuarioID) {
-        const userRef = doc(db, "usuarios", usuarioID);
-        const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
-            const datos = userSnap.data();
-            const carrito = datos.carrito || [];
-            mostrarArticulos(carrito);
-        } else {
+        if (!userSnap.exists()) {
             console.log("Usuario no encontrado");
+            return;
         }
+
+        const datos = userSnap.data();
+        const carrito = datos.carrito || []; // array vacío si no tiene carrito
+
+        if (carrito.length === 0) {
+            console.log("Carrito vacío");
+            return;
+        }
+        // Mostrar los productos en pantalla
+        mostrarArticulos(carrito);
+
+    } catch (error) {
+        console.error("Error cargando carrito:", error);
     }
 }
-
 

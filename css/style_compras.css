@@ -18,22 +18,48 @@
     justify-content: flex-start;
     backdrop-filter: blur(5px);
 
-    transition: max-height 0.5s ease;
+    transition: max-height 1s ease;
 }
 
 /* Mostrar el bloque al hacer hover sobre #compras */
 #compras:hover #bloque_compras {
-    /* #compras #bloque_compras { */
-    max-width: 500px;    
+/* #compras #bloque_compras { */  
+    max-width: 500px;
     max-height: 500px;
-    transform: translate(-450px, 35px); 
+    transform: translate(-450px, 35px);
     justify-content: flex-start;
     box-shadow: 0px 0px 0px 2px;
-    flex-wrap: nowrap; 
-} 
+    flex-wrap: nowrap;
+}
 
 #articulos {
     font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+
+.articulo {
+    user-select: none;
+    width: -webkit-fill-available;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.753);
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+}
+
+.articulo:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 0 0.5px gray;
 }
 
 #nombre {
@@ -46,27 +72,6 @@
     border-right: ridge;
 }
 
-.articulo {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.753);
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    flex-direction: row;
-    align-items: center;
-    justify-self: center;
-}
-
-.articulo:hover {
-    background-color: rgb(255, 255, 255);
-}
-#register_btn{
-    display: none;
-}
 #unidad {
     width: 120px;
     border-right: ridge;
@@ -77,6 +82,12 @@
     display: inline-block;
     text-overflow: ellipsis;
 }
+
+#register_btn {
+    display: none;
+}
+
+
 
 .icono-tacho {
     fill: darkgray;

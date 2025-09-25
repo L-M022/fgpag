@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="/css/style_register.css">
     <link rel="stylesheet" href="/css/mobile_style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link id="theme_compras" rel="stylesheet" href="/css/style_compras.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,27 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
+ 
     <script type="module" src="/scripts/login.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyDOFuZKYbSMCHe3-l_JDkGQUSk_c469XQM",
-            authDomain: "fg4x4-5669e.firebaseapp.com",
-            projectId: "fg4x4-5669e",
-            storageBucket: "fg4x4-5669e.firebasestorage.app",
-            messagingSenderId: "540558630585",
-            appId: "1:540558630585:web:94d75012ab66807e674568",
-            measurementId: "G-T1YP9FYM36"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    </script>
-</head>
+</head> 
 
 <body>
 
@@ -49,7 +32,7 @@
             <a href="#">Contacto</a>
             <a id="user" href="register.html">Ingresar</a>
 
-            <div id="compras">
+            <div id="--compras">
                 <div id="bloque_compras">
 
                     <h2>Carrito</h2>
@@ -67,7 +50,7 @@
                     </path>
                     <circle cx="143.8" cy="153" r="13"></circle>
                     <circle cx="90.8" cy="153" r="13"></circle>
-                    <text id="cantCompras" x="55%" y="20" dy=".50em" text-anchor="middle" font-size="120">1</text>
+                    <text id="cantCompras" x="55%" y="20" dy=".50em" text-anchor="middle" font-size="120"></text>
                 </svg>
             </div>
 
@@ -75,9 +58,14 @@
     </header>
 
 
+
     <div id="registerContainer">
         <h1 id="titulo">Ajustes de cuenta</h1>
-        <div style="display: flex;">
+        <div id="bloque_ajuste">
+            <p1 id="nombree">Nombre: </p1>
+            <p1 id="apellido">Apellido: </p1>
+            <p1>Dni: </p1>
+            <p1>Telefono: </p1> 
             <h2 id="finalizar_compra" onclick="logout()">Cerrar sesion</h2>
         </div>
     </div>
