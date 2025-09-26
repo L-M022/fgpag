@@ -2,7 +2,7 @@
 // Importar SDKs de Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { updateProfile } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { updateProfile,sendEmailVerification  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 import { getFirestore, doc, setDoc, getDoc, arrayRemove, updateDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
@@ -66,7 +66,9 @@ window.registrar = async function () {
 
         // Actualizar displayName en Auth
         await updateProfile(user, { displayName: nombre + " " + apellido });
-        console.log("Usuario creado en Auth:", user);
+         await sendEmailVerification(user);
+        alert("Registro exitoso. Por favor, revisa tu email para verificar tu cuenta.");
+
 
         // ------------------------------
         // Crear documento en Firestore
@@ -83,10 +85,7 @@ window.registrar = async function () {
                 compras: []      // historial vacío al inicio
             });
             console.log("Documento de usuario creado en Firestore:", user.uid);
-        }
-
-        alert("Registro exitoso: " + user.displayName);
-
+        } 
         window.location.href = "http://192.168.100.112:5500/index.html";
 
     } catch (error) {
@@ -147,7 +146,7 @@ window.goBack = async function () {
 
 window.logToReg = async function () {
 
-    document.getElementById("titulo").innerHTML = "Creá tu cuenta";
+    document.getElementById("titulo").textContent = "Creá tu cuenta";
 
     var btn = document.getElementById("login_btn");
     var btn_r = document.getElementById("register_btn");
@@ -163,33 +162,33 @@ window.logToReg = async function () {
 
 // Detectar cambios de sesión
 onAuthStateChanged(auth, (user) => {
-    var ingresarHeader = document.getElementById("user");
+
     var usuario = document.getElementById("user");
     if (user) {
         var nombreapellido = user.displayName || "";
         var nombre = nombreapellido.split(" ")[0].split("")[0];
         var apellido = nombreapellido.split(" ")[1].split("")[0];
 
-        ingresarHeader.title="Ajustes de la cuenta";
-        ingresarHeader.style.textTransform = "uppercase";
-        ingresarHeader.innerHTML = nombre[0] + apellido[0]; 
-        ingresarHeader.href = "http://192.168.100.112:5500/cuenta.html";
+        usuario.title = "Ajustes de la cuenta";
+        usuario.style.textTransform = "uppercase";
+        usuario.textContent = nombre[0] + apellido[0];
+        usuario.href = "http://192.168.100.112:5500/cuenta.html";
         console.log("usuario: " + user.displayName);
 
-        cargarCarrito(window.auth.currentUser.uid);
+        cargarCarrito();
         usuario.className = "circulo";
-        if (window.location.href.includes("cuenta")) {
+        if (usuario.textContent == "Ingresar") {
             const nombreUsuario = window.auth.currentUser;
-            ingresarHeader.title="Ingrese a su cuenta";
+            usuario.title = "Ingrese a su cuenta";
             var nombre = document.getElementById("nombree");
             var apellido = document.getElementById("apellido");
-            nombre.innerHTML = "<strong>Nombre:</strong> "+nombreUsuario.displayName.split(" ")[0];
-            apellido.innerHTML ="<strong>Apellido:</strong> "+ nombreUsuario.displayName.split(" ")[1];
+            nombre.textContent = "<strong>Nombre:</strong> " + nombreUsuario.displayName.split(" ")[0];
+            apellido.textContent = "<strong>Apellido:</strong> " + nombreUsuario.displayName.split(" ")[1];
         }
     } else {
         usuario.className = "--circulo";
-        ingresarHeader.innerHTML = "Ingresar";
-        ingresarHeader.href = "http://192.168.100.112:5500/register.html";
+        usuario.textContent = "Ingresar";
+        usuario.href = "http://192.168.100.112:5500/register.html";
     }
 });
 
@@ -287,10 +286,10 @@ window.revertirColor = async function (id) {
 }
 
 
-window.borrarCompra = async function (n, usuarioID) {
+window.borrarCompra = async function (n) {
     try {
         // Obtener referencia al documento del usuario
-        const userRef = doc(db, "usuarios", usuarioID);
+        const userRef = doc(db, "usuarios", window.auth.currentUser.uid);
 
         // Obtener los datos actuales
         const userSnap = await getDoc(userRef);
@@ -333,40 +332,50 @@ window.cantCompras = async function () {
     var articulos = document.getElementsByClassName("articulo");
     var cantcompras = document.getElementById("cantCompras");
     var compras = document.getElementById("bloque_compras");
+    var bloqueCompra = document.getElementById("--compras");
 
     if (articulos.length == 0) {
         cantcompras.textContent = "";
         compras.style.display = "none";
+        bloqueCompra.setAttribute("id", "--compras");
     } else {
+        bloqueCompra.setAttribute("id", "compras");
         compras.style.display = "block";
         cantcompras.textContent = articulos.length;
     }
-    var bloqueCompra = document.getElementById("--compras");
-    bloqueCompra.id = "compras";
-
 }
 
 window.mostrarArticulos = async function (productos) {
     const contenedor = document.getElementById("articulos");
-    contenedor.innerHTML = ""; // Limpia antes de renderizar
+    contenedor.textContent = ""; // Limpia antes de renderizar
 
     productos.forEach((producto, index) => {
         // Crear div principal
         const div = document.createElement("div");
         div.id = `articulo-${index}`;
         div.className = "articulo";
+
         // Nombre
         const pNombre = document.createElement("p");
-        pNombre.innerHTML = `<strong>${producto.nombre}</strong>`;
-        pNombre.setAttribute("id", "nombre");
+        const strongNombre = document.createElement("strong");
+        strongNombre.textContent = producto.nombre;
+        strongNombre.className = "nombre-producto"; // si tu CSS lo usa
+        pNombre.appendChild(strongNombre);
+        pNombre.id = "nombre";
+
         // Cantidad
         const pUnidad = document.createElement("p");
-        pUnidad.innerHTML = `Cantidad: <strong>${producto.unidad}</strong>`;
-        pUnidad.setAttribute("id", "unidad");
+        pUnidad.textContent = "Cantidad: ";
+        const strongUnidad = document.createElement("strong");
+        strongUnidad.textContent = producto.unidad;
+        strongUnidad.className = "cantidad-producto"; // opcional CSS
+        pUnidad.appendChild(strongUnidad);
+        pUnidad.id = "unidad";
+
         // Icono (SVG)
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("class", "icono-tacho");
-        svg.setAttribute("onclick", `borrarCompra(${index},'${window.auth.currentUser.uid}')`);
+        svg.addEventListener('click', () => borrarCompra(index)); // seguro
         svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         svg.setAttribute("viewBox", "20 50 450 500");
         svg.setAttribute("width", "30");
@@ -386,12 +395,15 @@ window.mostrarArticulos = async function (productos) {
         // Insertar en el contenedor
         contenedor.appendChild(div);
     });
+
     cantCompras();
 }
-window.cargarCarrito = async function (usuarioID) {
+
+window.cargarCarrito = async function () {
     try {
+
         // Referencia al documento del usuario
-        const userDocRef = doc(db, "usuarios", usuarioID);
+        const userDocRef = doc(db, "usuarios", window.auth.currentUser.uid);
 
         // Obtener el documento
         const userSnap = await getDoc(userDocRef);

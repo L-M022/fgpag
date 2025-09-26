@@ -43,7 +43,7 @@ a:hover {
 }
 
 #user {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .circulo {
@@ -100,25 +100,25 @@ nav a:hover {
   height: 10%;
 }
 
-input {
-  background-color: rgb(219, 218, 214);
-  height: 35px; 
-  border-radius: 4px;
-  border: none;
-  box-shadow: 0px 0px 0px 1px gray;
-  padding-left: 30px;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: 8px center;
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+ .search_bar {
+    background-color: rgb(219, 218, 214);
+    height: 35px;
+    width: -webkit-fill-available;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0px 0px 0px 1px gray;
+    padding-left: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
 }
 
-
 .parallax {
   position: relative;
-  background-image: url("/imagenes/fondo.png");
+  background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExajQ0a2x5eXljaHFobjIzc2R3ZHU2bmpkZnd3dnFpZG02dHQxd3RvYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hrajQvEPF07x1KR4vy/giphy.gif");
   height: 100vh;
   background-attachment: fixed;
   background-position: center;
@@ -127,6 +127,9 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.parallax::after{
+  background-color: #000000;
 }
 
 .texto_p {
@@ -241,7 +244,7 @@ footer {
 }
 
 p1 {
-  white-space: nowrap; 
+  white-space: nowrap;
   margin-bottom: 5px;
   border-radius: 4px;
   background-color: rgba(128, 128, 128, 0.336);

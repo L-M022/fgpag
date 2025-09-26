@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="/css/style_register.css">
     <link rel="stylesheet" href="/css/mobile_style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link id="theme_compras" rel="stylesheet" href="/css/style_compras.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,45 +16,49 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
- 
+
     <script type="module" src="/scripts/login.js"></script>
 </head>
 
 <body>
 
-   <header class="header">
+    <header class="header">
         <a href="index.html"><img class="logo" src="./imagenes/marcas/logo_FG.webp" alt=""></a>
-        <nav>
+
+        <div style="display: flex;    align-items: center;">
             <input class="search_bar"></input>
-            <a href="productos.html">Productos</a>
-            <a href="#">Contacto</a>
-            <a id="user" href="register.html">Ingresar</a>
+            <nav>
+                <a href="productos.html">Productos</a>
+                <a href="#">Contacto</a>
+                <a id="user" href="register.html">Ingresar</a>
 
-            <div id="--compras">
-                <div id="bloque_compras">
+                <div id="--compras" style="margin-right: 50px;">
+                    <div id="bloque_compras">
 
-                    <h2>Carrito</h2>
+                        <h2>Carrito</h2>
 
-                    <div id="articulos">
+                        <div id="articulos">
 
+                        </div>
+                        <h2 id="finalizar_compra">Finalizar compra</h2>
                     </div>
-                    <h2 id="finalizar_compra">Finalizar compra</h2>
+                    <svg class="icono-carrito" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 166" width="24"
+                        height="24" preserveAspectRatio="xMidYMid meet">
+
+                        <path
+                            d="M197.9 55.9L169.9 127.4 64.5 127.4 27.6 29.8 0 29.8 0.2 16.7 36.5 16.7 73.4 114.3 160.9 114.3 183 55.9">
+                        </path>
+                        <circle cx="143.8" cy="153" r="13"></circle>
+                        <circle cx="90.8" cy="153" r="13"></circle>
+                        <text id="cantCompras" x="55%" y="20" dy=".50em" text-anchor="middle" font-size="120"></text>
+                    </svg>
                 </div>
-                <svg class="icono-carrito" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 166" width="24"
-                    height="24" preserveAspectRatio="xMidYMid meet">
 
-                    <path
-                        d="M197.9 55.9L169.9 127.4 64.5 127.4 27.6 29.8 0 29.8 0.2 16.7 36.5 16.7 73.4 114.3 160.9 114.3 183 55.9">
-                    </path>
-                    <circle cx="143.8" cy="153" r="13"></circle>
-                    <circle cx="90.8" cy="153" r="13"></circle>
-                    <text id="cantCompras" x="55%" y="20" dy=".50em" text-anchor="middle" font-size="120"></text>
-                </svg>
-            </div>
-
-        </nav>
+            </nav>
+        </div>
     </header>
 
 
